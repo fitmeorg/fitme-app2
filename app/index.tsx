@@ -3,11 +3,14 @@ import { View, StyleSheet, Text, TouchableOpacity } from "react-native";
 import PagerView from "react-native-pager-view";
 import { Image } from "expo-image";
 import { LinearGradient } from "expo-linear-gradient";
-import { StatusBar } from "expo-status-bar";
-import { Link } from "expo-router";
 import Animated from "react-native-reanimated";
+import { useNavigation } from "@react-navigation/native";
+import { ParamListBase } from "@react-navigation/native";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 
-export default function Index() {
+const Index = () => {
+  const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
+
   const [currentPage, setCurrentPage] = useState(0);
 
   const handlePageSelected = (e: any) => {
@@ -16,20 +19,14 @@ export default function Index() {
 
   return (
     <View style={styles.screen}>
-      <StatusBar
-        style="light"
-        translucent={true}
-        backgroundColor="transparent"
-      />
       <View style={styles.imageContainer}>
         <Image
-          source={require("../assets/images/welcome/page1/wallpaper.jpg")}
+          source={require("../assets/images/welcome/wallpaper.jpg")}
           style={styles.image}
         />
       </View>
-
-      <Link
-        href={"/(auth)/logIn"}
+      <Text
+        onPress={() => navigation.push("LogIn")}
         style={{
           position: "absolute",
           right: 1,
@@ -40,8 +37,7 @@ export default function Index() {
           zIndex: 10,
         }}>
         Skip
-      </Link>
-
+      </Text>
       <PagerView
         style={styles.ViewPageContainer}
         initialPage={0}
@@ -51,7 +47,7 @@ export default function Index() {
           <View style={styles.imageFitnessContainer}>
             <Image
               style={styles.imageFitness}
-              source={require("../assets/images/welcome/page1/Fitness-stats.svg")}
+              source={require("../assets/images/welcome/Fitness-stats.svg")}
             />
           </View>
           <View style={styles.page}>
@@ -86,7 +82,7 @@ export default function Index() {
           <View style={styles.imageFitnessContainer}>
             <Image
               style={styles.imageFitness}
-              source={require("../assets/images/welcome/page1/woman.svg")}
+              source={require("../assets/images/welcome/woman.svg")}
             />
           </View>
           <View style={styles.page}>
@@ -117,7 +113,7 @@ export default function Index() {
           <View style={styles.imageFitnessContainer}>
             <Image
               style={styles.imageFitness}
-              source={require("../assets/images/welcome/page1/woman-desk.svg")}
+              source={require("../assets/images/welcome/woman-desk.svg")}
             />
           </View>
           <View style={styles.page}>
@@ -166,7 +162,7 @@ export default function Index() {
         style={{
           justifyContent: "flex-end",
           alignItems: "center",
-          paddingBottom: 40,
+          paddingBottom: 30,
         }}>
         <LinearGradient
           colors={["#7850BF", "#512DA8"]}
@@ -174,23 +170,28 @@ export default function Index() {
           end={{ x: 1, y: 0 }}
           style={styles.button}>
           <TouchableOpacity>
-            <Link push href={"/(auth)/logIn"}>
+            <Text>
               <Text style={styles.buttonText}>Get Started</Text>
-            </Link>
+            </Text>
           </TouchableOpacity>
         </LinearGradient>
-        <Text style={{ fontSize: 14, color: "#404B52", marginTop: 20 }}>
+        <Text style={{ fontSize: 14, color: "#404B52", padding: 15 }}>
           Already have account?{" "}
-          <Link push href="/(auth)/signUp">
-            <Text style={{ fontSize: 16, color: "#461B93", fontWeight: 500 }}>
+          <Text>
+            <Text
+              style={{
+                fontSize: 16,
+                color: "#461B93",
+                fontWeight: 500,
+              }}>
               Sign up
             </Text>
-          </Link>
+          </Text>
         </Text>
       </View>
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   screen: {
@@ -204,7 +205,7 @@ const styles = StyleSheet.create({
   container: {
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
-    height: "34%",
+    height: "35%",
     backgroundColor: "#ffffff",
     alignItems: "center",
   },
@@ -271,3 +272,5 @@ const styles = StyleSheet.create({
     backgroundColor: "#C9C9C9",
   },
 });
+
+export default Index;
