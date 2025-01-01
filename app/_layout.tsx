@@ -5,33 +5,57 @@ import { StatusBar } from "expo-status-bar";
 import Index from "./index";
 import LogIn from "./(auth)/logIn";
 import { createStackNavigator } from "@react-navigation/stack";
-import { View, StyleSheet } from "react-native";
-import { ImageBackground } from "expo-image";
-import { Image } from "react-native";
+import SignUp from "./(auth)/signUp";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import Home from "./(tabs)/home";
+import Routines from "./(tabs)/routines";
+import Activity from "./(tabs)/activity";
+import Profile from "./(tabs)/profile";
+import Tabbar from "@/components/Tabbar";
+import { Dimensions } from "react-native";
+import { color } from "d3";
+
+const heightScreen = Dimensions.get("window").height;
 
 const Stack = createStackNavigator();
+const Tab = createBottomTabNavigator();
 
+function MyTabs() {
+  return (
+    <Tab.Navigator tabBar={(props) => <Tabbar {...props} />}>
+      <Tab.Screen name="Home" component={Home} />
+      <Tab.Screen name="Routines" component={Routines} />
+      <Tab.Screen name="Activity" component={Activity} />
+      <Tab.Screen name="Profile" component={Profile} />
+    </Tab.Navigator>
+  );
+}
 
 function RootStack() {
   return (
-    <Stack.Navigator initialRouteName="Index">
+    <Stack.Navigator
+      initialRouteName="Index"
+      screenOptions={{
+        headerTintColor: "#FFFF",
+        headerTitleStyle: {
+          color: "#FFFF",
+        },
+        headerStyle: {
+          backgroundColor: "#714ABB",
+          height: (heightScreen * 13) / 100,
+        },
+      }}>
       <Stack.Screen
         name="Index"
         component={Index}
         options={{ headerShown: false }}
       />
+      <Stack.Screen name="LogIn" component={LogIn} />
+      <Stack.Screen name="Sign Up" component={SignUp} />
       <Stack.Screen
-        name="LogIn"
-        component={LogIn}
-        options={{
-          headerTitleStyle: {
-            color: "#fff",
-          },
-          headerStyle: {
-            height: 100,
-            backgroundColor: "#714ABB",
-          },
-        }}
+        options={{ headerShown: false }}
+        name="HomePage"
+        component={MyTabs}
       />
     </Stack.Navigator>
   );
@@ -47,16 +71,3 @@ export default function RootLayoutNav() {
     </SessionProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  headerBackground: {
-    flex: 1,
-    width: "1%",
-    height: "1%",
-  },
-});
