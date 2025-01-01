@@ -179,6 +179,7 @@ const Index = () => {
           Already have account?{" "}
           <Text>
             <Text
+              onPress={() => navigation.push("Sign Up")}
               style={{
                 fontSize: 16,
                 color: "#461B93",
