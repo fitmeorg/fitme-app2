@@ -1,22 +1,18 @@
-import { Link } from "expo-router";
 import { View, Text } from "react-native";
+import { ParamListBase, useNavigation } from "@react-navigation/native";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 
 export default function Routines() {
+  const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
+
   return (
     <View>
-      <Text>Tab One</Text>
-      <Link push href="/(groups)/create">
-        <Text>create</Text>
-      </Link>
-      <Link push href="/(groups)/join">
-        <Text>join</Text>
-      </Link>
-      <Link push href="/(streak)/streak">
-        <Text>streak</Text>
-      </Link>
-      <Link push href="/(notification)/notification">
-        <Text>notification</Text>
-      </Link>
+      <Text onPress={() => navigation.push("Create Routine")}>
+        Create Routine
+      </Text>
+      <Text onPress={() => navigation.push("Routine Details")}>
+        Routine Details
+      </Text>
     </View>
   );
 }
