@@ -13,7 +13,14 @@ import Activity from "./(tabs)/activity";
 import Profile from "./(tabs)/profile";
 import Tabbar from "@/components/Tabbar";
 import { Dimensions } from "react-native";
-import { color } from "d3";
+import BackButton from "@/components/BackButton";
+import CreateRoutine from "./(routines)/create";
+import CreateGroup from "./(groups)/create";
+import JoinGroup from "./(groups)/join";
+import RoutineDetails from "./(routines)/details";
+import QuickActivity from "./(activity)/quickActivity";
+import GroupDetails from "./(groups)/details";
+import Ionicons from "@expo/vector-icons/Ionicons";
 
 const heightScreen = Dimensions.get("window").height;
 
@@ -22,11 +29,50 @@ const Tab = createBottomTabNavigator();
 
 function MyTabs() {
   return (
-    <Tab.Navigator tabBar={(props) => <Tabbar {...props} />}>
+    <Tab.Navigator
+      screenOptions={{
+        headerTintColor: "#FFFF",
+        headerTitleStyle: {
+          color: "#FFFF",
+        },
+        headerStyle: {
+          backgroundColor: "#714ABB",
+          height: (heightScreen * 16) / 100,
+        },
+      }}
+      tabBar={(props) => <Tabbar {...props} />}>
       <Tab.Screen name="Home" component={Home} />
-      <Tab.Screen name="Routines" component={Routines} />
-      <Tab.Screen name="Activity" component={Activity} />
-      <Tab.Screen name="Profile" component={Profile} />
+      <Tab.Screen
+        name="Routines"
+        component={Routines}
+        options={{
+          headerTitle: "Routine Library",
+          headerTitleStyle: {
+            fontSize: 23,
+          },
+          headerTitleAlign: "center",
+        }}
+      />
+      <Tab.Screen
+        name="Activity"
+        component={Activity}
+        options={{
+          headerTitleStyle: {
+            fontSize: 23,
+          },
+          headerTitleAlign: "center",
+        }}
+      />
+      <Tab.Screen
+        name="Profile"
+        component={Profile}
+        options={{
+          headerTitleStyle: {
+            fontSize: 23,
+          },
+          headerTitleAlign: "center",
+        }}
+      />
     </Tab.Navigator>
   );
 }
@@ -36,9 +82,9 @@ function RootStack() {
     <Stack.Navigator
       initialRouteName="Index"
       screenOptions={{
-        headerTintColor: "#FFFF",
         headerTitleStyle: {
           color: "#FFFF",
+          fontSize: 23,
         },
         headerStyle: {
           backgroundColor: "#714ABB",
@@ -51,7 +97,93 @@ function RootStack() {
         options={{ headerShown: false }}
       />
       <Stack.Screen name="LogIn" component={LogIn} />
-      <Stack.Screen name="Sign Up" component={SignUp} />
+      <Stack.Screen
+        name="Sign Up"
+        component={SignUp}
+        options={{
+          headerLeft: () => <BackButton />,
+        }}
+      />
+      <Stack.Screen
+        name="Create Routine"
+        component={CreateRoutine}
+        options={{
+          headerStyle: {
+            backgroundColor: "#714ABB",
+            height: (heightScreen * 16) / 100,
+          },
+          headerTitleAlign: "center",
+          headerLeft: () => <BackButton />,
+        }}
+      />
+      <Stack.Screen
+        name="Create Groups"
+        component={CreateGroup}
+        options={{
+          headerStyle: {
+            backgroundColor: "#714ABB",
+            height: (heightScreen * 16) / 100,
+          },
+          headerTitleAlign: "center",
+          headerLeft: () => <BackButton />,
+        }}
+      />
+      <Stack.Screen
+        name="Join Group"
+        component={JoinGroup}
+        options={{
+          headerStyle: {
+            backgroundColor: "#714ABB",
+            height: (heightScreen * 16) / 100,
+          },
+          headerTitleAlign: "center",
+          headerLeft: () => <BackButton />,
+        }}
+      />
+      <Stack.Screen
+        name="Routine Details"
+        component={RoutineDetails}
+        options={{
+          headerStyle: {
+            backgroundColor: "#714ABB",
+            height: (heightScreen * 16) / 100,
+          },
+          headerTitleAlign: "center",
+          headerLeft: () => <BackButton />,
+        }}
+      />
+      <Stack.Screen
+        name="Quick Activity"
+        component={QuickActivity}
+        options={{
+          headerStyle: {
+            backgroundColor: "#714ABB",
+            height: (heightScreen * 16) / 100,
+          },
+          headerTitleAlign: "center",
+          headerLeft: () => <BackButton />,
+        }}
+      />
+      <Stack.Screen
+        name="Group Details"
+        component={GroupDetails}
+        options={{
+          headerStyle: {
+            backgroundColor: "#714ABB",
+            height: (heightScreen * 16) / 100,
+          },
+          headerTitleAlign: "center",
+          headerLeft: () => <BackButton />,
+          headerRight: () => (
+            <Ionicons
+              name="settings-sharp"
+              size={30}
+              color="white"
+              style={{ marginRight: 16 }}
+            />
+          ),
+        }}
+      />
       <Stack.Screen
         options={{ headerShown: false }}
         name="HomePage"
