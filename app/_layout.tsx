@@ -96,7 +96,13 @@ function RootStack() {
         component={Index}
         options={{ headerShown: false }}
       />
-      <Stack.Screen name="LogIn" component={LogIn} />
+      <Stack.Screen
+        name="LogIn"
+        component={LogIn}
+        options={{
+          headerLeft: () => <BackButton />,
+        }}
+      />
       <Stack.Screen
         name="Sign Up"
         component={SignUp}

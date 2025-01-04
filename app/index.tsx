@@ -26,7 +26,7 @@ const Index = () => {
         />
       </View>
       <Text
-        onPress={() => navigation.push("LogIn")}
+        onPress={() => navigation.push("Sign Up")}
         style={{
           position: "absolute",
           right: 1,
@@ -169,23 +169,21 @@ const Index = () => {
           start={{ x: 0, y: 0 }}
           end={{ x: 1, y: 0 }}
           style={styles.button}>
-          <TouchableOpacity>
-            <Text>
-              <Text style={styles.buttonText}>Get Started</Text>
-            </Text>
+          <TouchableOpacity onPress={() => navigation.push("Sign Up")}>
+            <Text style={styles.buttonText}>Get Started</Text>
           </TouchableOpacity>
         </LinearGradient>
         <Text style={{ fontSize: 14, color: "#404B52", padding: 15 }}>
           Already have account?{" "}
           <Text>
             <Text
-              onPress={() => navigation.push("Sign Up")}
+              onPress={() => navigation.push("LogIn")}
               style={{
-                fontSize: 16,
+                fontSize: 14,
                 color: "#461B93",
                 fontWeight: 500,
               }}>
-              Sign up
+              Log In
             </Text>
           </Text>
         </Text>
