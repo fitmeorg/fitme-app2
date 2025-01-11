@@ -1,8 +1,10 @@
 import { Stack } from "expo-router";
-import { View, Text, Image } from "react-native";
+import { View, Text, ScrollView } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
-import { ParamListBase, useNavigation } from "@react-navigation/native";
-import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import ActivitiesCarousel from "@/components/ActivitiesCarousel";
+import { Image } from "expo-image";
+import JoinedGroup from "@/components/JoinedGroup";
+import PlusModal from "@/components/PlusModal";
 
 const Header = () => {
   return (
@@ -76,23 +78,54 @@ const HeaderRight = () => {
 };
 
 export default function Home() {
-  const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
-
   return (
-    <View>
-      <Stack.Screen
-        options={{
-          headerTitle: () => <Header />,
-          headerRight: () => <HeaderRight />,
-        }}
-      />
-      <Text onPress={() => navigation.push("Create Routine")}>
-        create group
-      </Text>
-      <Text onPress={() => navigation.push("Join Group")}>join group</Text>
-      <Text onPress={() => navigation.push("Group Details")}>
-        group details
-      </Text>
+    <View style={{ flex: 1 }}>
+      <ScrollView style={{ flex: 1 }} showsVerticalScrollIndicator={false}>
+        <Stack.Screen
+          options={{
+            headerTitle: () => <Header />,
+            headerRight: () => <HeaderRight />,
+          }}
+        />
+        <View
+          style={{
+            flexDirection: "row",
+            justifyContent: "space-between",
+            alignItems: "center",
+            width: "90%",
+            paddingVertical: 10,
+            marginLeft: "5%",
+          }}>
+          <Text
+            style={{
+              fontSize: 19,
+              fontWeight: 600,
+              fontFamily: "Montserrat-SemiBold",
+            }}>
+            Quick Activity
+          </Text>
+          <Text
+            style={{ fontSize: 12, fontWeight: "medium", color: "#714ABB" }}>
+            See all
+          </Text>
+        </View>
+
+        <ActivitiesCarousel />
+
+        <Text
+          style={{
+            fontSize: 19,
+            fontWeight: 600,
+            fontFamily: "Montserrat-SemiBold",
+            marginLeft: "5%",
+            paddingVertical: 10,
+          }}>
+          Joined Group
+        </Text>
+
+        <JoinedGroup />
+      </ScrollView>
+      <PlusModal />
     </View>
   );
 }
