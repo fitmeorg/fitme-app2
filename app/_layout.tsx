@@ -21,6 +21,7 @@ import RoutineDetails from "./(routines)/details";
 import QuickActivity from "./(activity)/quickActivity";
 import GroupDetails from "./(groups)/details";
 import Ionicons from "@expo/vector-icons/Ionicons";
+import GroupId from "./(groups)/groupId";
 
 const heightScreen = Dimensions.get("window").height;
 
@@ -140,7 +141,7 @@ function RootStack() {
         options={{
           headerStyle: {
             backgroundColor: "#714ABB",
-            height: (heightScreen * 16) / 100,
+            height: (heightScreen * 19) / 100,
           },
           headerTitleAlign: "center",
           headerLeft: () => <BackButton />,
@@ -188,6 +189,19 @@ function RootStack() {
               style={{ marginRight: 16 }}
             />
           ),
+        }}
+      />
+      <Stack.Screen
+        name="Group id"
+        component={GroupId}
+        options={{
+          title: "",
+          headerStyle: {
+            backgroundColor: "#714ABB",
+            height: (heightScreen * 16) / 100,
+          },
+          headerTitleAlign: "center",
+          headerLeft: () => <BackButton />,
         }}
       />
       <Stack.Screen
