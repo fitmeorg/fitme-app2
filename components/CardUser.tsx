@@ -1,53 +1,36 @@
 import React from "react";
-import { View, Text, ScrollView, TouchableOpacity } from "react-native";
+import { View, Text, ScrollView } from "react-native";
 import { Image } from "expo-image";
+import { Avatar, Card } from "react-native-paper";
 
 function User() {
   return (
     <>
-      <View
-        style={{
-          flexDirection: "row",
-          alignItems: "center",
-          padding: 15,
-          justifyContent: "space-between",
-        }}>
-        <View style={{ flexDirection: "row", alignItems: "center" }}>
+      <Card.Title
+        style={{ width: "100%" }}
+        title="Card Title"
+        subtitle="Card Subtitle"
+        left={(props) => <Avatar.Icon {...props} icon="folder" />}
+        right={(props) => (
           <Image
-            style={{
-              height: 55,
-              width: 55,
-              borderRadius: 28,
-            }}
-            source={require("../assets/images/groups/tipos-de-agarre-en-pesas.jpg")}
-          />
-          <View style={{ marginLeft: 7 }}>
-            <Text style={{ fontSize: 15, fontWeight: 700 }}>Moderator</Text>
-            <Text style={{ fontSize: 12, fontWeight: "regular" }}>
-              Mr. Walker
-            </Text>
-          </View>
-        </View>
-        <TouchableOpacity>
-          <Image
-            style={{
-              height: 40,
-              width: 40,
-            }}
+            style={{ height: 40, width: 40 }}
             source={require("../assets/images/groups/arrow.svg")}
           />
-        </TouchableOpacity>
-      </View>
-      <View style={{ alignItems: "center" }}>
-        <View
-          style={{
-            width: "90%",
-            height: 1,
-            backgroundColor: "#f2f2f2",
-          }}
-        />
-      </View>
+        )}
+      />
     </>
+  );
+}
+
+function Line() {
+  return (
+    <View
+      style={{
+        width: "90%",
+        height: 1,
+        backgroundColor: "#f2f2f2",
+        marginLeft: "5%",
+      }}></View>
   );
 }
 export default function CardUser() {
@@ -61,9 +44,13 @@ export default function CardUser() {
       }}>
       <ScrollView showsVerticalScrollIndicator={false}>
         <User />
+        <Line />
         <User />
+        <Line />
         <User />
+        <Line />
         <User />
+        <Line />
         <User />
       </ScrollView>
     </View>

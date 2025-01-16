@@ -1,10 +1,12 @@
-import { Stack } from "expo-router";
+import { Stack, useNavigation } from "expo-router";
 import { View, Text, ScrollView } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import ActivitiesCarousel from "@/components/ActivitiesCarousel";
 import { Image } from "expo-image";
 import JoinedGroup from "@/components/JoinedGroup";
 import PlusModal from "@/components/PlusModal";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { ParamListBase } from "@react-navigation/native";
 
 const Header = () => {
   return (
@@ -36,9 +38,12 @@ const Header = () => {
 };
 
 const HeaderRight = () => {
+  const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
+
   return (
     <View style={{ flexDirection: "row" }}>
       <Ionicons
+        onPress={() => navigation.push("Notification")}
         name="notifications-outline"
         size={30}
         color="white"

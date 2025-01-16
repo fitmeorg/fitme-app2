@@ -22,6 +22,7 @@ import QuickActivity from "./(activity)/quickActivity";
 import GroupDetails from "./(groups)/details";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import GroupId from "./(groups)/groupId";
+import Notification from "./(notification)/notification";
 
 const heightScreen = Dimensions.get("window").height;
 
@@ -196,6 +197,19 @@ function RootStack() {
         component={GroupId}
         options={{
           title: "",
+          headerStyle: {
+            backgroundColor: "#714ABB",
+            height: (heightScreen * 16) / 100,
+          },
+          headerTitleAlign: "center",
+          headerLeft: () => <BackButton />,
+        }}
+      />
+      <Stack.Screen
+        name="Notification"
+        component={Notification}
+        options={{
+          title: "Notification",
           headerStyle: {
             backgroundColor: "#714ABB",
             height: (heightScreen * 16) / 100,
