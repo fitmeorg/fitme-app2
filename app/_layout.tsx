@@ -223,6 +223,18 @@ function RootStack() {
         name="HomePage"
         component={MyTabs}
       />
+      <Stack.Screen
+        name="Routine Library"
+        component={Routines}
+        options={{
+          title: "Notification",
+          headerStyle: {
+            backgroundColor: "#714ABB",
+            height: (heightScreen * 16) / 100,
+          },
+          headerTitleAlign: "center",
+        }}
+      />
     </Stack.Navigator>
   );
 }
