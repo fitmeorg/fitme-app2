@@ -5,6 +5,7 @@ import {
   TextInput,
   StyleSheet,
   TouchableOpacity,
+  KeyboardAvoidingView,
 } from "react-native";
 import { Image } from "expo-image";
 import { useNavigation } from "@react-navigation/native";
@@ -23,7 +24,9 @@ export default function LogIn() {
   };
 
   return (
-    <View style={{ flex: 1, alignItems: "center" }}>
+    <KeyboardAvoidingView
+      style={{ flex: 1, alignItems: "center" }}
+      behavior="height">
       <Image
         source={require("../../assets/images/fitmeLogo.svg")}
         style={{ height: 100, width: 100, marginTop: 20 }}
@@ -114,7 +117,7 @@ export default function LogIn() {
           </Text>
         </Text>
       </View>
-    </View>
+    </KeyboardAvoidingView>
   );
 }
 

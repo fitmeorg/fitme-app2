@@ -1,5 +1,10 @@
 import React from "react";
-import { View, Text, TouchableOpacity } from "react-native";
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  KeyboardAvoidingView,
+} from "react-native";
 import Feather from "@expo/vector-icons/Feather";
 import { Image } from "expo-image";
 import { TextInput } from "react-native-paper";
@@ -9,7 +14,9 @@ export default function CreateGroup() {
   const [description, onChangeDescription] = React.useState("");
 
   return (
-    <View style={{ flex: 1, alignItems: "center" }}>
+    <KeyboardAvoidingView
+      style={{ flex: 1, alignItems: "center" }}
+      behavior="height">
       <TextInput
         outlineStyle={{
           borderColor: "#414142",
@@ -61,26 +68,32 @@ export default function CreateGroup() {
         </View>
       </View>
 
-      <TouchableOpacity
+      <View
         style={{
-          justifyContent: "center",
-          alignContent: "center",
-          alignItems: "center",
-          height: 68,
+          flex: 1,
           width: "90%",
-          backgroundColor: "#714ABB",
-          borderRadius: 15,
-          bottom: -150,
+          justifyContent: "flex-end",
+          marginBottom: 55,
         }}>
-        <Text
+        <TouchableOpacity
           style={{
-            color: "#ffff",
-            fontSize: 17,
-            fontWeight: "semibold",
+            justifyContent: "center",
+            alignContent: "center",
+            alignItems: "center",
+            height: 68,
+            backgroundColor: "#714ABB",
+            borderRadius: 15,
           }}>
-          Submit
-        </Text>
-      </TouchableOpacity>
-    </View>
+          <Text
+            style={{
+              color: "#ffff",
+              fontSize: 17,
+              fontWeight: "semibold",
+            }}>
+            Submit
+          </Text>
+        </TouchableOpacity>
+      </View>
+    </KeyboardAvoidingView>
   );
 }

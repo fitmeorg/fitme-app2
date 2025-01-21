@@ -5,6 +5,7 @@ import {
   TextInput,
   StyleSheet,
   TouchableOpacity,
+  KeyboardAvoidingView,
 } from "react-native";
 import { Image } from "expo-image";
 import { useNavigation } from "@react-navigation/native";
@@ -17,7 +18,6 @@ export default function SignUp() {
   const [name, onChangeName] = React.useState("");
   const [phoneNumber, onChangePhoneNumber] = React.useState("");
 
-
   const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
 
   const [password, setPassword] = useState("");
@@ -27,7 +27,9 @@ export default function SignUp() {
     setShowPassword(!showPassword);
   };
   return (
-    <View style={{ flex: 1, alignItems: "center" }}>
+    <KeyboardAvoidingView
+      style={{ flex: 1, alignItems: "center" }}
+      behavior="height">
       <Image
         source={require("../../assets/images/fitmeLogo.svg")}
         style={{ height: 100, width: 100, marginTop: 20 }}
@@ -131,7 +133,7 @@ export default function SignUp() {
           </Text>
         </Text>
       </View>
-    </View>
+    </KeyboardAvoidingView>
   );
 }
 
