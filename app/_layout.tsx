@@ -59,6 +59,7 @@ function MyTabs() {
         name="Activity"
         component={Activity}
         options={{
+          headerTitle: "Quick Activity",
           headerTitleStyle: {
             fontSize: 23,
           },
