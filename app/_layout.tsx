@@ -73,6 +73,11 @@ function MyTabs() {
             fontSize: 23,
           },
           headerTitleAlign: "center",
+          headerStyle: {
+            backgroundColor: "#714ABB",
+            height: (heightScreen * 19) / 100,
+          },
+          headerTitle: "",
         }}
       />
     </Tab.Navigator>
