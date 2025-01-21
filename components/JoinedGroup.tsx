@@ -44,8 +44,7 @@ function Group() {
             marginTop: 11,
             borderTopRightRadius: 5,
             borderBottomRightRadius: 5,
-          }}
-          experimentalBlurMethod="dimezisBlurView">
+          }}>
           <Text style={{ color: "#ffff" }}>Grupo B</Text>
         </BlurView>
         <TouchableOpacity
@@ -99,8 +98,7 @@ function Group() {
             marginTop: 11,
             borderTopRightRadius: 5,
             borderBottomRightRadius: 5,
-          }}
-          experimentalBlurMethod="dimezisBlurView">
+          }}>
           <Text style={{ color: "#ffff" }}>Grupo B</Text>
         </BlurView>
         <TouchableOpacity
