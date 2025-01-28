@@ -23,6 +23,10 @@ import GroupDetails from "./(groups)/details";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import GroupId from "./(groups)/groupId";
 import Notification from "./(notification)/notification";
+import PostPhotos from "./postPhotos/postPhotos";
+import GroupMembers from "./(groups)/groupMembers";
+import Chat from "./(chat)/chat";
+import ChatInformation from "@/components/ChatInformation";
 
 const heightScreen = Dimensions.get("window").height;
 
@@ -239,6 +243,43 @@ function RootStack() {
             height: (heightScreen * 16) / 100,
           },
           headerTitleAlign: "center",
+        }}
+      />
+      <Stack.Screen
+        name="Photo of the Day"
+        component={PostPhotos}
+        options={{
+          headerStyle: {
+            backgroundColor: "#714ABB",
+            height: (heightScreen * 16) / 100,
+          },
+          headerTitleAlign: "center",
+          headerLeft: () => <BackButton />,
+        }}
+      />
+      <Stack.Screen
+        name="Group Members"
+        component={GroupMembers}
+        options={{
+          headerStyle: {
+            backgroundColor: "#714ABB",
+            height: (heightScreen * 16) / 100,
+          },
+          headerTitleAlign: "center",
+          headerLeft: () => <BackButton />,
+        }}
+      />
+      <Stack.Screen
+        name="Chat"
+        component={Chat}
+        options={{
+          headerStyle: {
+            backgroundColor: "#714ABB",
+            height: (heightScreen * 16) / 100,
+          },
+          headerTitleAlign: "center",
+          headerLeft: () => <BackButton />,
+          headerRight: () => <ChatInformation />,
         }}
       />
     </Stack.Navigator>
