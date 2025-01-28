@@ -61,7 +61,10 @@ const HeaderRight = () => {
           alignContent: "center",
           justifyContent: "center",
         }}>
-        <Image source={require("../../assets/images/header/streakFlame.png")} />
+        <Image
+          style={{ height: 15, width: 15 }}
+          source={require("../../assets/images/header/streakFlame.png")}
+        />
         <Text
           style={{
             marginLeft: 4,
