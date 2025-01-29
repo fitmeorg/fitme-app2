@@ -232,11 +232,9 @@ export default function Streak() {
               height={110}
               spacing={44}
               initialSpacing={0}
-              color1="skyblue"
-              textColor1="green"
+              color1="#00AEC5"
               hideDataPoints
-              dataPointsColor1="blue"
-              startFillColor1="skyblue"
+              startFillColor1="#00AEC5"
               startOpacity={0.8}
               endOpacity={0.3}
               yAxisThickness={0}
