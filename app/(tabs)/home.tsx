@@ -1,5 +1,5 @@
 import { Stack, useNavigation } from "expo-router";
-import { View, Text, ScrollView } from "react-native";
+import { View, Text, ScrollView, TouchableOpacity } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import ActivitiesCarousel from "@/components/ActivitiesCarousel";
 import { Image } from "expo-image";
@@ -49,7 +49,8 @@ const HeaderRight = () => {
         color="white"
         style={{ marginRight: 5 }}
       />
-      <View
+      <TouchableOpacity
+        onPress={() => navigation.push("Streak Details")}
         style={{
           height: 34,
           width: 67,
@@ -80,7 +81,7 @@ const HeaderRight = () => {
           }}>
           Days
         </Text>
-      </View>
+      </TouchableOpacity>
     </View>
   );
 };
