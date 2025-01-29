@@ -27,6 +27,7 @@ import PostPhotos from "./postPhotos/postPhotos";
 import GroupMembers from "./(groups)/groupMembers";
 import Chat from "./(chat)/chat";
 import ChatInformation from "@/components/ChatInformation";
+import Streak from "./(streak)/streak";
 
 const heightScreen = Dimensions.get("window").height;
 
@@ -280,6 +281,19 @@ function RootStack() {
           headerTitleAlign: "center",
           headerLeft: () => <BackButton />,
           headerRight: () => <ChatInformation />,
+        }}
+      />
+      <Stack.Screen
+        name="Streak Details"
+        component={Streak}
+        options={{
+          title: "Streak Details",
+          headerStyle: {
+            backgroundColor: "#714ABB",
+            height: (heightScreen * 16) / 100,
+          },
+          headerTitleAlign: "center",
+          headerLeft: () => <BackButton />,
         }}
       />
     </Stack.Navigator>
